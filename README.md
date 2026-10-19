@@ -2,7 +2,7 @@
 
 Private Claude Code mods (marketplace `andre-mods`).
 
-- **AutoModell** – picks the best model and effort level for every prompt
+- **AutoModell** – picks the best model and effort level for every prompt, includes PromptEngineer
 - **usage-dashboard** – pane with token/model/cache/session/cost stats from local Claude logs
 
 ## Install on a new machine
