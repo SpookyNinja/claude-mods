@@ -11,9 +11,11 @@ Needs `gh auth login` (or git credentials) with access to this private repo.
 
 ```
 claude plugin marketplace add SpookyNinja/claude-mods
-claude plugin install AutoModell@andre-mods
-claude plugin install usage-dashboard@andre-mods
+claude plugin install AutoModell@andre-mods --scope user
+claude plugin install usage-dashboard@andre-mods --scope user
 ```
+
+Installed at user scope, the mods load in every session. Do not use `~/.claude/dev-mods/` for permanent mods: that folder is hot-reloaded for a single session only. Develop in the clone instead.
 
 ## Update across machines
 
