@@ -28,3 +28,15 @@ claude plugin update usage-dashboard@andre-mods
 ```
 
 Then `/reload-plugins` in a running session.
+
+## Edit on any machine (auto-sync)
+
+Clone once and register the clone itself as the marketplace, so edits apply live and are pushed from the same folder:
+
+```
+git clone https://github.com/SpookyNinja/claude-mods ~/Projects/claude-mods
+claude plugin marketplace add ~/Projects/claude-mods
+```
+
+After a change run `./publish.sh "message"`; on other machines `git pull` and `/reload-plugins`.
+`CLAUDE.md` and a note in each mod's `register.tsx` tell Claude to do this automatically.

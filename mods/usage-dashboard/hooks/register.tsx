@@ -1,3 +1,7 @@
+// SYNC NOTE (for Claude and humans): this mod lives in the git repo SpookyNinja/claude-mods (mods/<name>/).
+// Edit ONLY the clone (default: ~/Projects/claude-mods), never a copy in ~/.claude/plugins/cache.
+// After every change: bump "version" in .claude-plugin/plugin.json, then run ./publish.sh "<message>" (git pull --rebase, commit, push).
+// Other machines pick it up with: git pull (if registered from the clone) or claude plugin marketplace update andre-mods && claude plugin update <name>@andre-mods.
 import { atom, read, update } from 'claude-code'
 import type { Register } from 'claude-code'
 
