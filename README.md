@@ -17,6 +17,45 @@ claude plugin install usage-dashboard@andre-mods --scope user
 
 Installed at user scope, the mods load in every session. Do not use `~/.claude/dev-mods/` for permanent mods: that folder is hot-reloaded for a single session only. Develop in the clone instead.
 
+## Troubleshooting: installing on Windows with the Claude desktop app
+
+The install commands above need a `claude` CLI. The Claude desktop app does **not** put one on your PATH, so in a normal terminal you get:
+
+> claude : The term 'claude' is not recognized as the name of a cmdlet, function, script file, or executable program.
+
+The app does ship its own CLI, but it sits in the app's virtualized (Store/MSIX) AppData folder. A regular terminal can't see that folder (`Test-Path` returns `False`, and `%APPDATA%\Claude` doesn't exist there). The same path works from inside the app.
+
+### Fix
+
+Run the install from the desktop app's Code tab, where the bundled CLI is reachable. Ask Claude to run the three install commands above.
+
+Or call the bundled binary directly. Find it first with:
+
+```powershell
+Get-ChildItem "$env:APPDATA\Claude\claude-code" -Recurse -Filter claude.exe
+```
+
+The version folder changes with each app update. Then run it with the call operator `&`:
+
+```powershell
+& "<path-to>\claude.exe" plugin marketplace add SpookyNinja/claude-mods
+```
+
+Plugins installed this way go into the desktop app's plugin store. A separately installed CLI keeps its own plugin set and will not see them.
+
+### PowerShell pitfalls
+
+- A quoted path must be prefixed with `&`. Without it you get `Unexpected token 'plugin' in expression or statement`.
+- Use PowerShell syntax, not bash (`&&` doesn't work in Windows PowerShell 5.1).
+
+### Verify
+
+```
+claude plugin list
+```
+
+Both mods should show as `enabled` at user scope (AutoModell 0.5.0, usage-dashboard 0.1.0). Then run `/reload-plugins` in a session.
+
 ## Update across machines
 
 On the machine where you changed something: bump `version` in the mod's `.claude-plugin/plugin.json`, then commit and push.
