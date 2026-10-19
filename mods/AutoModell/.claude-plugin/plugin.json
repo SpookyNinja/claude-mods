@@ -1,0 +1,6 @@
+{
+  "name": "AutoModell",
+  "version": "0.5.0",
+  "description": "Analyzes every prompt and picks the best model and effort level for it",
+  "types": "./types/index.d.ts"
+}

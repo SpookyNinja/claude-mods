@@ -1,0 +1,8 @@
+{
+  "name": "andre-mods",
+  "owner": { "name": "andre" },
+  "plugins": [
+    { "name": "AutoModell", "source": "./mods/AutoModell" },
+    { "name": "usage-dashboard", "source": "./mods/usage-dashboard" }
+  ]
+}
